@@ -1,0 +1,481 @@
+================================================================================
+ROES - ROYAL ORGANIZING ECOSYSTEM
+Application Overview: What It Is, Who Uses It, and How It Works
+================================================================================
+
+Document type : Product and system overview (text only)
+Audience      : Company / management / technical and non-technical stakeholders
+Product state : Front end complete (website + mobile app) running on sample
+                data. Back end is the next phase.
+
+
+--------------------------------------------------------------------------------
+1. WHAT IS ROES?
+--------------------------------------------------------------------------------
+
+ROES (Royal Organizing Ecosystem) is a city-management platform that connects
+the three levels of a city's community in one organized system:
+
+    MAYOR  ->  ADMIN  ->  USER (RESIDENT)
+
+It gives the mayor's office one place to see and manage the whole city, gives
+the managers of each building or public place (admins) the tools to look after
+their own community, and gives residents a simple mobile app to stay informed,
+raise problems, and take part in community life.
+
+The platform has two surfaces:
+
+  1. A WEBSITE for the mayor (desktop-first dashboard).
+  2. A MOBILE APP (Android / iOS) shared by admins and residents. The same
+     sign-in is used by both; the user's role decides which home screen opens.
+
+The sample data used in this version is set in Kuala Lumpur (16 places,
+about 1,100 residents).
+
+
+--------------------------------------------------------------------------------
+2. THE PROBLEM IT SOLVES
+--------------------------------------------------------------------------------
+
+Cities and large residential communities usually run on scattered channels:
+group chats, notice boards, phone calls and paper forms. As a result:
+
+  - Announcements do not reliably reach the right people.
+  - Complaints get lost or have no visible status.
+  - The mayor's office has no live picture of how the city is growing or what
+    residents are raising.
+  - Neighbour disputes escalate because there is no neutral place to settle them.
+  - Safety information and donation drives have no single trusted home.
+
+ROES replaces these with one structured, role-based system where every message,
+complaint and rule has a clear sender, a clear audience and a visible status.
+
+
+--------------------------------------------------------------------------------
+3. ROLES AND HIERARCHY
+--------------------------------------------------------------------------------
+
+There are three roles. Authority flows downward, and each role only sees and
+manages what belongs to it.
+
+There are also two kinds of PLACES in the city:
+
+  - RESIDENTIAL places: buildings or communities where people live (for example
+    condominiums, apartments, landed communities).
+  - NON-RESIDENTIAL places: public or commercial places (for example a station,
+    a mall, a park). These have no registered residents.
+
+Summary table:
+
+  ROLE                     SURFACE        SCOPE
+  -----------------------  -------------  --------------------------------------
+  Mayor                    Website        Whole city: admins, users, places,
+                                          announcements, safety policies,
+                                          donations, public complaints, analytics
+  Admin (residential)      Mobile app     Own residence: private announcements,
+                                          house rules (residents and visitors),
+                                          private complaints, analytics
+  Admin (non-residential)  Mobile app     Own place: public announcements, one
+                                          set of house rules, complaints about
+                                          that place
+  User (resident)          Mobile app     Own account; public and own-residence
+                                          announcements; house rules; reports;
+                                          complaints; search; safety info;
+                                          donations; game
+
+3.1 MAYOR
+  - Sees the full picture of the city through a live dashboard.
+  - Creates admins, or gives the admin role to an existing user.
+  - Assigns an admin to a place and can change that assignment later.
+  - Can freeze (suspend) or reactivate an admin.
+  - Can view all users and all places, but personal details are READ-ONLY.
+    The mayor never edits a person's personal information.
+  - Publishes public announcements.
+  - Creates and publishes safety policies that appear in every resident's app.
+  - Creates and manages donation campaigns.
+  - Receives public complaints sent directly to the mayor and replies to them.
+
+3.2 ADMIN
+  An admin manages one place, and what the admin can do depends on the place type.
+
+  Residential admin:
+    - Sees the number of residents and a resident growth chart.
+    - Posts PRIVATE notices that only the residents of that residence can see.
+    - Maintains TWO sets of house rules: one for residents, one for visitors.
+    - Receives and answers private complaints from residents.
+    - Has a searchable list of residents with read-only details.
+
+  Non-residential (public place) admin:
+    - Posts PUBLIC notices.
+    - Maintains ONE set of house rules (for visitors).
+    - Receives and answers complaints about that place.
+    - Has no registered residents.
+
+  Both kinds of admin can:
+    - Search any place on the city map and read its visitor rules.
+    - Edit their own email and phone number and profile photo.
+    - Read mayor announcements and notices about their own place.
+
+3.3 USER (RESIDENT)
+  - Registers in the app and verifies their email, choosing their residence.
+  - Manages their own account (name, phone, avatar style, password).
+  - Reads public notices and the private notices of their own residence.
+  - Reads house rules (resident rules and visitor rules).
+  - Sends complaints, starts neighbour reports, and reports places.
+  - Searches places on the map by name and by location.
+  - Reads safety information and can call emergency services in one tap.
+  - Views donation campaigns and plays the community recycling game.
+
+
+--------------------------------------------------------------------------------
+4. THE MAYOR WEBSITE (FEATURES AND SCREENS)
+--------------------------------------------------------------------------------
+
+Sign-in
+  Mayor-only login with email and password, a "forgot password" flow, and a
+  "keep me signed in" option.
+
+Dashboard
+  Key figures at a glance: total users, new users this month, active admins,
+  open complaints. Also: a resident growth chart (30 days or 12 months), a live
+  activity feed, users per residence, complaints summary, donation campaigns,
+  and the admin roster. A "Live" indicator simulates real-time events (new
+  resident, new complaint, new donation) and can be paused.
+
+New Users (growth analysis)
+  See who joined during: this month, the last 3 months, a specific month, this
+  year, or a specific year. Shows a chart, a breakdown by residence, a table,
+  and CSV export.
+
+Admins
+  Create an admin, give the admin role to an existing user, change an admin's
+  place, freeze or reactivate an admin. Personal details are read-only.
+
+Users
+  Every user in the city with search and filters. Personal details are
+  read-only.
+
+Places
+  Create, edit, remove and assign admins to places. Two views: "Map and list"
+  (an interactive city map with pins - houses for residential, buildings for
+  non-residential) and "Manage places" (with an "Unassigned" filter that shows
+  places still waiting for an admin). Each place's details include its resident
+  and visitor rules.
+
+Announcements
+  Public and private announcements. The mayor can publish public ones.
+
+Safety Policies
+  Create, edit, publish, unpublish and delete safety policies (for example fire
+  safety, flood preparedness, emergency numbers). Published policies appear in
+  each resident's profile in the mobile app.
+
+Donations
+  Create and manage donation campaigns with a title, description, goal amount,
+  cover image, category and deadline. Shows total raised, active campaigns,
+  number of donors and combined goal. Campaigns can be closed and reopened.
+
+Public Complaints
+  An inbox of complaints that residents addressed to the mayor. The mayor can
+  reply (quick-reply suggestions are available) and update the status.
+
+Profile
+  Mayor details, security and appearance (Light or Dark theme).
+
+
+--------------------------------------------------------------------------------
+5. THE MOBILE APP: SHARED FEATURES
+--------------------------------------------------------------------------------
+
+  - Animated splash screen on launch.
+  - One sign-in for admins and residents; after sign-in a personal "Hello,
+    {name} - welcome back" screen with the user's photo appears, then the role's
+    home screen opens.
+  - Resident registration in 4 steps with email-code verification and the
+    password entered twice. New residents see a one-time "Welcome to ROES".
+  - Forgot-password flow with a verification code.
+  - EXPLORE MAP: a pannable, zoomable map of the city with search by name. Tap
+    any place to see its details and the rules a visitor must follow there.
+  - Profile with photo upload.
+  - Appearance: Light or Dark theme. Dark mode uses a "Luxury Black and Gold"
+    look; light mode uses the royal blue and gold brand colours.
+  - Haptic feedback and notification toggles.
+  - Sign out (with confirmation) from the profile and from the avatar menu on the
+    home screen.
+
+
+--------------------------------------------------------------------------------
+6. THE MOBILE APP: ADMIN SIDE
+--------------------------------------------------------------------------------
+
+Home / Dashboard
+  Residential admin: number of residents, complaints, rules, notices and a
+  growth chart. Public-place admin: complaints, rules and notices.
+
+Notices
+  Residential admin: posts PRIVATE notices (only that residence's residents see
+  them). Public-place admin: posts PUBLIC notices.
+
+House Rules
+  Residential admin: two sets - rules for residents and rules for visitors.
+  Public-place admin: one set for visitors. Rules can be added, edited,
+  reordered and removed. Residents can flag "Someone is breaking this rule".
+
+Inbox (Complaints)
+  Complaints are shown as a chat with a status timeline (for example New,
+  In review, Done), plus quick replies for common answers. Place reports and
+  neighbour-report escalations appear here as well.
+
+Residents (residential admins only)
+  Searchable resident list with read-only details.
+
+Notifications
+  A bell icon leads to a screen showing mayor announcements and notices about
+  the admin's own place.
+
+Profile
+  Admins can edit their own email and phone number and profile photo, and change
+  the theme.
+
+
+--------------------------------------------------------------------------------
+7. THE MOBILE APP: RESIDENT SIDE
+--------------------------------------------------------------------------------
+
+The resident app has five tabs: Home, Community, Explore, Help, Me.
+
+HOME
+  Greeting, residence card, quick actions, a "following up" list of open
+  complaints and reports, and the latest notices.
+
+COMMUNITY
+  - Notices: public notices plus the private notices of the resident's own
+    residence; filter by source (mayor / residence / public place); unseen
+    notices are marked with a dot.
+  - House Rules: switch between rules for residents and rules for visitors, with
+    a "Someone is breaking this rule" action.
+  - Reports: place reports posted about the resident's own residence.
+
+EXPLORE
+  The city map with search. Tap a place to read its visitor rules and any
+  reports made about it.
+
+HELP
+  Complaints - a resident chooses where the complaint goes:
+    (a) to their own residence's admin (private),
+    (b) to the admin of a specific place, or
+    (c) to the mayor (public complaint).
+  Each complaint is a chat with a status timeline so the resident can always see
+  where it stands.
+
+  Neighbour Reports - when a resident has a problem with a neighbour, a GROUP
+  CHAT is opened between the resident, the neighbour and the "ROES Mediator"
+  (an AI helper). The mediator:
+    - holds back rude, threatening or shouting messages and shows a warning,
+    - after three warnings, sends the conversation to the residence admin,
+    - lets the people involved mark the issue as resolved or escalate it to
+      the admin themselves.
+
+  Place Reports - "Report a place" posts a notice-style report about any place
+  (the resident's own residence or a public place). Residents of that residence
+  can see it in Community > Reports, anyone can see it in the place's sheet on
+  the Explore map, and that place's admin sees it from an Inbox banner.
+
+ME
+  - Profile and appearance (Light / Dark).
+  - Manage Account: name, phone, avatar style, change password, delete account.
+    Email and residence are locked.
+  - Safety and Policies: a one-tap emergency call (999) and the community safety
+    policies published by the mayor.
+  - Donations: active campaigns with progress bars; pledging is a demo (no real
+    payment yet).
+  - Tidy Town game (see next section).
+
+
+--------------------------------------------------------------------------------
+8. TIDY TOWN: THE COMMUNITY RECYCLING GAME
+--------------------------------------------------------------------------------
+
+Purpose: encourage better recycling habits and daily engagement in a light,
+friendly way.
+
+How it plays:
+  - 45 seconds, 3 lives. Everyday items fall one at a time (for example a glass
+    bottle, newspaper, cardboard box, milk carton, drink can, banana peel,
+    greasy pizza box, sweet wrapper, cigarette butt, chicken bone).
+  - The player swipes the item left into the green RECYCLE bin or right into the
+    grey RUBBISH bin (or taps the bin).
+  - A correct sort scores points; streaks raise a score multiplier (up to x3).
+  - A wrong sort or a missed item costs a life and shows a short educational tip
+    explaining why the item belongs where it does.
+  - Items use their own natural colours, so colour never gives the answer away.
+
+Leaderboard:
+  - Each player chooses a public NICKNAME; real names are never shown.
+  - Rankings are shown as a podium and ranked list, with two views: whole city
+    and "My residence".
+  - After a game the player sees their rank and best score.
+
+Presentation:
+  - 3D-style item and bin artwork, bins whose lids open as the player drags an
+    item toward them, and an animated town in the background (skyline, people and
+    pets walking, cars, a bus, a recycling truck, birds and clouds) that is
+    daytime in light mode and an evening scene in dark mode.
+
+
+--------------------------------------------------------------------------------
+9. HOW THE PIECES WORK TOGETHER (TYPICAL FLOWS)
+--------------------------------------------------------------------------------
+
+FLOW A - Onboarding a new resident
+  1. The resident downloads the app and registers, choosing their residence.
+  2. They verify their email with a code.
+  3. They appear in the mayor's "New Users" analysis and in their admin's
+     resident list.
+
+FLOW B - Setting up a place
+  1. The mayor creates a place on the website (residential or non-residential).
+  2. The mayor creates an admin, or promotes an existing user, and assigns the
+     admin to the place.
+  3. The admin signs in on the app and sets up notices and house rules.
+
+FLOW C - A resident reports a problem
+  1. The resident opens Help and chooses where to send the complaint: own admin,
+     a specific place's admin, or the mayor.
+  2. The recipient replies in the chat and updates the status.
+  3. The resident follows progress on their Home screen under "following up".
+
+FLOW D - A neighbour dispute
+  1. The resident starts a neighbour report; a group chat with the neighbour and
+     the AI mediator opens.
+  2. The mediator filters aggressive messages and warns the sender.
+  3. The issue is marked resolved, or it escalates to the residence admin after
+     three warnings (or on request).
+
+FLOW E - City-wide communication
+  1. The mayor publishes a public announcement, a safety policy or a donation
+     campaign on the website.
+  2. These appear in the residents' and admins' apps.
+
+FLOW F - Place information
+  Anyone can search a place on the Explore map and read the rules for visiting
+  it, so visitors know what is expected before they arrive.
+
+
+--------------------------------------------------------------------------------
+10. PRIVACY AND CONTROL PRINCIPLES
+--------------------------------------------------------------------------------
+
+  - Role-based access: each person only sees what their role allows.
+  - The mayor can see users and residences but cannot edit anyone's personal
+    details; admins see only their own residents.
+  - Private notices and private complaints stay inside the residence.
+  - The game shows only nicknames, never real names.
+  - Aggressive or abusive messages in neighbour reports are held back
+    automatically.
+  - Residents can edit their own account and delete it.
+  - Admins can be frozen by the mayor without deleting their records.
+
+
+--------------------------------------------------------------------------------
+11. TECHNOLOGY
+--------------------------------------------------------------------------------
+
+Mayor website (folder fe)
+  Next.js (App Router), TypeScript, Tailwind CSS, Radix-based UI components,
+  Recharts (charts), Leaflet (map), Zustand (state), React Hook Form with Zod
+  (forms and validation). Light and Dark themes.
+
+Mobile app (folder apk)
+  Expo and React Native with TypeScript, Expo Router (navigation), Reanimated
+  (animation), react-native-svg (game artwork), Zustand (state, saved on the
+  device). One codebase builds for Android and iOS and can also run as a web
+  preview. An installable Android APK can be produced with EAS Build.
+
+Back end (folder be)
+  Not started. It begins after the front end and the product idea are finished.
+
+Project structure:
+    ROSE/
+      fe/   mayor website
+      apk/  mobile app (admins and residents)
+      be/   back end (planned)
+
+
+--------------------------------------------------------------------------------
+12. CURRENT STATUS
+--------------------------------------------------------------------------------
+
+COMPLETED (front end, running on generated sample data)
+  [x] Mayor website: sign-in, dashboard, new-user analysis, admins, users,
+      places with map, announcements, safety policies, donations, public
+      complaints, profile, Light/Dark themes.
+  [x] Mobile app shared: splash, sign-in, registration with email code, forgot
+      password, welcome screen, Explore map, profile, themes.
+  [x] Mobile app admin side: dashboard, notices, house rules, complaint inbox,
+      residents, notifications, profile editing.
+  [x] Mobile app resident side: home, community, explore, help (complaints,
+      neighbour reports, place reports), account management, safety, donations,
+      Tidy Town game with leaderboard.
+
+IMPORTANT NOTE ON THE DEMO
+  This version has NO back end. All data lives in the browser (website) or on
+  the device (mobile app) and is generated sample data. Specifically:
+    - Sign-in, email codes and password reset are simulated; codes are shown on
+      screen instead of being emailed.
+    - The AI mediator and neighbour replies run as simple on-device rules.
+    - Donation pledges do not move any money.
+    - The map is a static preview image with pins placed from each place's
+      coordinates.
+    - Passwords are stored in plain text for the demo only.
+  Because of this, the demo shows exactly how the product looks and behaves, but
+  it is not yet connected to a live system.
+
+DEMO ACCOUNTS
+  Mayor (website)          mayor@roes.city              Mayor@123
+  Admin (residential)      vikram.tan@roes.city         Admin@123
+  Admin (public place)     alya.ng@roes.city            Admin@123
+  Resident                 nurul.hassan@roes.city       User@123
+
+
+--------------------------------------------------------------------------------
+13. NEXT PHASE: BACK END AND GO-LIVE ROADMAP
+--------------------------------------------------------------------------------
+
+  1. Real authentication: hashed passwords, real email and SMS verification,
+     secure sessions, role enforcement on the server.
+  2. A database and an API behind every action the screens already use, so the
+     website and the app share one live set of data (for example a safety policy
+     or donation post the mayor creates appears in the residents' apps).
+  3. A real AI moderation / mediation service for neighbour reports.
+  4. Push notifications for notices, complaint replies and report updates.
+  5. A live map service in place of the static preview image.
+  6. A payment provider for donations.
+  7. File storage for photos and cover images instead of embedding them.
+  8. Security review, testing, and production deployment (website hosting, app
+     store release).
+
+The front end has been built so that these additions only replace the data layer
+behind the screens; the screens themselves are not expected to change.
+
+
+--------------------------------------------------------------------------------
+14. KEY BENEFITS (SUMMARY FOR DECISION MAKERS)
+--------------------------------------------------------------------------------
+
+  - One system for the whole city: mayor, building managers and residents.
+  - Faster, more reliable communication: notices reach exactly the right
+    audience.
+  - Accountability: every complaint has an owner, a chat and a status.
+  - Data for decisions: live resident growth, complaint volume and donation
+    progress for the mayor's office.
+  - Safer communities: central safety policies and a one-tap emergency call.
+  - Calmer neighbourhoods: AI-assisted mediation before issues reach an admin.
+  - Community engagement: donations and a recycling game that rewards good
+    habits.
+  - Modern, polished experience: Light and Dark themes, smooth animation,
+    consistent design on web and mobile.
+
+================================================================================
+END OF DOCUMENT
+================================================================================
