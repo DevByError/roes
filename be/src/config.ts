@@ -15,6 +15,7 @@ const schema = z.object({
   DB_USER: z.string().default("root"),
   DB_PASSWORD: z.string().default(""),
   DB_LOG: bool,
+  DB_SSL: bool,
   DB_SYNC: z.enum(["true", "false"]).default("true").transform((v) => v === "true"),
   JWT_SECRET: z.string().min(32, "JWT_SECRET must be at least 32 characters"),
   JWT_EXPIRES_DAYS: z.coerce.number().default(30),

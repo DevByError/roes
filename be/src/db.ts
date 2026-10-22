@@ -9,4 +9,5 @@ export const sequelize = new Sequelize(config.DB_NAME, config.DB_USER, config.DB
   define: { underscored: true, timestamps: true },
   pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
   timezone: "+00:00",
+  dialectOptions: config.DB_SSL ? { ssl: { minVersion: "TLSv1.2", rejectUnauthorized: true } } : {},
 });
