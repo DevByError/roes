@@ -10,5 +10,5 @@ try {
   process.exit(1);
 }
 
-Bun.serve({ port: config.PORT, fetch: app.fetch, maxRequestBodySize: 8 * 1024 * 1024, idleTimeout: 30 });
+Bun.serve({ hostname: "0.0.0.0", port: config.PORT, fetch: app.fetch, maxRequestBodySize: 8 * 1024 * 1024, idleTimeout: 30 });
 console.log(`ROES API listening on http://localhost:${config.PORT}`);
