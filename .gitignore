@@ -1,0 +1,15 @@
+﻿node_modules/
+.next/
+.expo/
+dist/
+web-build/
+.env
+.env.local
+*.log
+*.tsbuildinfo
+.DS_Store
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
